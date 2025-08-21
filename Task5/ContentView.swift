@@ -1,86 +1,95 @@
-//
-//  ContentView.swift
-//  Task5
-//
-//  Created by Anas Nasr on 20/08/2025.
-//
-
 import SwiftUI
 import CoreData
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
-
+    
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Task.createdAt, ascending: false)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var tasks: FetchedResults<Task>
+    
+    @State private var showingAddTask = false
+    
 
+    private var totalTasks: Int {
+        tasks.count
+    }
+    
+    private var completedTasks: Int {
+        tasks.filter { $0.isCompleted }.count
+    }
+    
     var body: some View {
         NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+            VStack(spacing: 0) {
+                TaskStatsView(
+                    totalTasks: totalTasks,
+                    completedTasks: completedTasks
+                )
+                .padding()
+            
+                if tasks.isEmpty {
+                    EmptyStateView()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity)
+                } else {
+                    List {
+                        ForEach(tasks) { task in
+                            TaskRowView(
+                                task: task,
+                                onToggle: { toggleTask(task) }
+                            )
+                        }
+                        .onDelete(perform: deleteTask)
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
+            .navigationTitle("Task Manager")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
+                    Button {
+                        showingAddTask = true
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
+                
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
             }
-            Text("Select an item")
+            .sheet(isPresented: $showingAddTask) {
+                AddTaskView()
+                    .environment(\.managedObjectContext, viewContext)
+            }
+
         }
     }
-
-    private func addItem() {
+    
+    private func toggleTask(_ task: Task) {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            task.isCompleted.toggle()
+            saveContext()
         }
     }
-
-    private func deleteItems(offsets: IndexSet) {
+    
+    private func deleteTask(offsets: IndexSet) {
         withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            offsets.map { tasks[$0] }.forEach(viewContext.delete)
+            saveContext()
+        }
+    }
+    
+    private func saveContext() {
+        do {
+            try viewContext.save()
+        } catch {
+            print("Error saving context: \(error)")
         }
     }
 }
 
-private let itemFormatter: DateFormatter = {
-    let formatter = DateFormatter()
-    formatter.dateStyle = .short
-    formatter.timeStyle = .medium
-    return formatter
-}()
-
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    ContentView()
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
