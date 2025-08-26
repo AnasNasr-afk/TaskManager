@@ -1,7 +1,14 @@
+//
+//  HomeView.swift
+//  Task5
+//
+//  Created by Anas Nasr on 26/08/2025.
+//
+
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct HomeView: View {
     @Environment(\.managedObjectContext) private var viewContext
     
     @FetchRequest(
@@ -90,6 +97,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    HomeView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

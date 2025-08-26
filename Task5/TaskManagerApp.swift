@@ -1,18 +1,19 @@
 //
-//  Task5App.swift
+//  TaskManagerApp.swift
 //  Task5
 //
-//  Created by Anas Nasr on 20/08/2025.
+//  Created by Anas Nasr on 26/08/2025.
 //
+
 import SwiftUI
 
 @main
-struct Task5App: App {
+struct TaskManagerApp: App {
     let persistenceController = PersistenceController.shared
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }

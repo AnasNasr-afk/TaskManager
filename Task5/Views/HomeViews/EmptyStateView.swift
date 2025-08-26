@@ -10,12 +10,12 @@ import SwiftUI
 struct EmptyStateView: View {
     var body: some View {
         VStack(spacing: 24) {
-            // Icon
+           
             Image(systemName: "checklist")
                 .font(.system(size: 80))
                 .foregroundColor(.blue.opacity(0.6))
             
-            // Text
+           
             VStack(spacing: 8) {
                 Text("No Tasks Yet")
                     .font(.title2)
@@ -28,7 +28,7 @@ struct EmptyStateView: View {
                     .lineLimit(nil)
             }
             
-            // Decorative element
+           
             Image(systemName: "arrow.up.right")
                 .font(.title)
                 .foregroundColor(.blue.opacity(0.4))
