@@ -17,7 +17,8 @@ struct HomeView: View {
     private var tasks: FetchedResults<Task>
     
     @State private var showingAddTask = false
-    
+    @Binding var selectedTab: Int
+    @Binding var mapCityName: String
 
     private var totalTasks: Int {
         tasks.count
@@ -44,7 +45,9 @@ struct HomeView: View {
                         ForEach(tasks) { task in
                             TaskRowView(
                                 task: task,
-                                onToggle: { toggleTask(task) }
+                                onToggle: { toggleTask(task) },
+                                selectedTab: $selectedTab,
+                                mapCityName: $mapCityName
                             )
                         }
                         .onDelete(perform: deleteTask)
@@ -97,6 +100,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(selectedTab: .constant(0), mapCityName: .constant(""))
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

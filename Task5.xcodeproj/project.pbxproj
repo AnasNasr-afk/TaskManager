@@ -6,13 +6,31 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		8F4263E72E5E15E40073568F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4263E62E5E15E30073568F /* CoreLocation.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		7410D83F2E564FE100CAA69D /* Task5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task5.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8F4263E62E5E15E30073568F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		8F4263E42E5E10F50073568F /* Exceptions for "Task5" folder in "Task5" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 7410D83E2E564FE100CAA69D /* Task5 */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		7410D8412E564FE100CAA69D /* Task5 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				8F4263E42E5E10F50073568F /* Exceptions for "Task5" folder in "Task5" target */,
+			);
 			path = Task5;
 			sourceTree = "<group>";
 		};
@@ -23,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F4263E72E5E15E40073568F /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				7410D8412E564FE100CAA69D /* Task5 */,
+				8F4263E52E5E15E30073568F /* Frameworks */,
 				7410D8402E564FE100CAA69D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +63,14 @@
 				7410D83F2E564FE100CAA69D /* Task5.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		8F4263E52E5E15E30073568F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8F4263E62E5E15E30073568F /* CoreLocation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +281,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Task5/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -280,6 +311,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Task5/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

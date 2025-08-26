@@ -9,6 +9,8 @@ import SwiftUI
 struct TaskRowView: View {
     let task: Task
     let onToggle: () -> Void
+    @Binding var selectedTab: Int
+    @Binding var mapCityName: String
     
     var body: some View {
         HStack(spacing: 12) {
@@ -20,10 +22,33 @@ struct TaskRowView: View {
             .buttonStyle(PlainButtonStyle())
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(task.title ?? "Untitled Task")
-                    .font(.body)
-                    .foregroundColor(task.isCompleted ? .secondary : .primary)
-                    .strikethrough(task.isCompleted)
+                HStack {
+                    Text(task.title ?? "Untitled Task")
+                        .font(.body)
+                        .foregroundColor(task.isCompleted ? .secondary : .primary)
+                        .strikethrough(task.isCompleted)
+                    
+                    Spacer()
+                    
+                    if let location = task.location, !location.isEmpty {
+                        Button(action: {
+                            mapCityName = location
+                            selectedTab = 1 
+                        }) {
+                            Text(location)
+                                .padding(.horizontal, 8)
+                                .background(Color.blue.opacity(0.2))
+                                .foregroundColor(.blue)
+                                .clipShape(RoundedRectangle(cornerRadius: 15))
+                        }
+                    } else {
+                        Text("No location")
+                            .padding(.horizontal, 8)
+                            .background(Color.gray.opacity(0.3))
+                            .foregroundColor(.secondary)
+                            .clipShape(RoundedRectangle(cornerRadius: 15))
+                    }
+                }
                 
                 if let createdAt = task.createdAt {
                     Text(createdAt, format: .dateTime.day().month().year())
@@ -44,4 +69,3 @@ struct TaskRowView: View {
         .contentShape(Rectangle())
     }
 }
-
