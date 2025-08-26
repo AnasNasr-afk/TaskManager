@@ -12,6 +12,8 @@ struct AddTaskView: View {
     @Environment(\.dismiss) private var dismiss
     
     @State private var title = ""
+    @State private var cityName = ""
+
     @FocusState private var isTextFieldFocused: Bool
     
     var body: some View {
@@ -33,6 +35,17 @@ struct AddTaskView: View {
                                 addTask()
                             }
                         }
+                    TextField("Enter the city", text: $cityName)
+                        .textFieldStyle(.roundedBorder)
+                        .font(.body)
+                        .focused($isTextFieldFocused)
+                        .submitLabel(.done)
+                        .onSubmit {
+                            if !title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                                addTask()
+                            }
+                        }
+                    
                     
                 }
                 
@@ -71,6 +84,7 @@ struct AddTaskView: View {
             newTask.title = trimmedTitle
             newTask.isCompleted = false
             newTask.createdAt = Date()
+            newTask.location = cityName
             
             do {
                 try viewContext.save()
