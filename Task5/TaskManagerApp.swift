@@ -15,6 +15,7 @@ struct TaskManagerApp: App {
 
     var body: some Scene {
         WindowGroup {
+            //MAINTABVIEW NOT  HOME VIEW 
             HomeView(selectedTab: $selectedTab, mapCityName: $mapCityName)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
