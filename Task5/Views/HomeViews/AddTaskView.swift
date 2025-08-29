@@ -96,6 +96,4 @@ struct AddTaskView: View {
     }
 }
 
-#Preview {
-    AddTaskView()
-}
+

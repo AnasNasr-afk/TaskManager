@@ -99,7 +99,4 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView(selectedTab: .constant(0), mapCityName: .constant(""))
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
+

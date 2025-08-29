@@ -1,23 +1,31 @@
-//
-//  TaskManagerApp.swift
-//  Task5
-//
-//  Created by Anas Nasr on 26/08/2025.
-//
-
 import SwiftUI
+import UserNotifications
 
 @main
 struct TaskManagerApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
     let persistenceController = PersistenceController.shared
-    @State private var selectedTab = 0
-    @State private var mapCityName: String = ""
 
     var body: some Scene {
         WindowGroup {
-            //MAINTABVIEW NOT  HOME VIEW 
-            HomeView(selectedTab: $selectedTab, mapCityName: $mapCityName)
+            
+            MainTabView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .onAppear {
+                    
+                    AppDelegate.onTap = { userInfo in
+                        print("Tapped notification payload:", userInfo)
+                        
+                    }
+                }
+                .task {
+                    
+                    let settings = await UNUserNotificationCenter.current().notificationSettings()
+                    if settings.authorizationStatus == .notDetermined {
+                        _ = try? await NotificationManager.shared.requestAuthorization()
+                    }
+                }
         }
     }
 }

@@ -34,7 +34,4 @@ struct MainTabView: View {
     }
 }
 
-#Preview {
-    MainTabView()
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
-}
+

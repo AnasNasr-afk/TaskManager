@@ -174,8 +174,5 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 }
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView(cityName: "New York")
-    }
-}
+
+

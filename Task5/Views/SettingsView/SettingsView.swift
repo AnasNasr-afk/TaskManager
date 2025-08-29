@@ -10,23 +10,26 @@ import SwiftUI
 struct SettingsView: View {
     @StateObject private var viewModel = SettingsViewModel()
     
-    var body: some View {
     
+    var body: some View {
         NavigationView {
-            
-            Form {
-                Toggle(isOn: $viewModel.isDarkMode) {
-                    Text("Dark Mode")
+            List {
+                Section {
+                    NavigationLink("Notifications Demo") { NotficationDemoView() }
                 }
-                .onChange(of: viewModel.isDarkMode) { value in
-                    viewModel.toggleDarkMode(value)
-                }
-                
-                Toggle(isOn: $viewModel.enableNotifications) {
-                    Text("Enable Notifications")
-                }
-                .onChange(of: viewModel.enableNotifications) { value in
-                    viewModel.toggleNotifications(value)
+                Section {
+                    Toggle(isOn: $viewModel.isDarkMode) {
+                        Text("Dark Mode")
+                    }
+                    .onChange(of: viewModel.isDarkMode) { value in
+                        viewModel.toggleDarkMode(value)
+                    }
+                    Toggle(isOn: $viewModel.enableNotifications) {
+                        Text("Enable Notifications")
+                    }
+                    .onChange(of: viewModel.enableNotifications) { value in
+                        viewModel.toggleNotifications(value)
+                    }
                 }
             }
             .preferredColorScheme(viewModel.isDarkMode ? .dark : .light)
@@ -40,10 +43,7 @@ struct SettingsView: View {
             }
         }
     }
-}
 
-struct settingview_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
+
+
 }
