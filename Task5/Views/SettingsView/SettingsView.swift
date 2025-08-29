@@ -24,6 +24,7 @@ struct SettingsView: View {
     var body: some View {
         NavigationView {
             Form {
+                Section("Notifications") { NavigationLink("Notifications Demo") { NotficationDemoView() } }
                 Section(header: Text("Preferences")) {
                     Toggle("Dark Mode", isOn: Binding(
                         get: { appSettings.isDarkMode },

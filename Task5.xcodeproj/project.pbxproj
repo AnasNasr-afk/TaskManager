@@ -10,9 +10,28 @@
 		8F4263E72E5E15E40073568F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4263E62E5E15E30073568F /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		FFE925442E624FAB002473A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7410D8372E564FE100CAA69D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7410D83E2E564FE100CAA69D;
+			remoteInfo = Task5;
+		};
+		FFE925532E624FC2002473A1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7410D8372E564FE100CAA69D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7410D83E2E564FE100CAA69D;
+			remoteInfo = Task5;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		7410D83F2E564FE100CAA69D /* Task5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Task5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4263E62E5E15E30073568F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FFE925402E624FAB002473A1 /* TaskManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE9254D2E624FC2002473A1 /* TaskManagerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaskManagerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -34,6 +53,16 @@
 			path = Task5;
 			sourceTree = "<group>";
 		};
+		FFE925412E624FAB002473A1 /* TaskManagerTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TaskManagerTests;
+			sourceTree = "<group>";
+		};
+		FFE9254E2E624FC2002473A1 /* TaskManagerUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = TaskManagerUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +74,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFE9253D2E624FAB002473A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE9254A2E624FC2002473A1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -52,6 +95,8 @@
 			isa = PBXGroup;
 			children = (
 				7410D8412E564FE100CAA69D /* Task5 */,
+				FFE925412E624FAB002473A1 /* TaskManagerTests */,
+				FFE9254E2E624FC2002473A1 /* TaskManagerUITests */,
 				8F4263E52E5E15E30073568F /* Frameworks */,
 				7410D8402E564FE100CAA69D /* Products */,
 			);
@@ -61,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				7410D83F2E564FE100CAA69D /* Task5.app */,
+				FFE925402E624FAB002473A1 /* TaskManagerTests.xctest */,
+				FFE9254D2E624FC2002473A1 /* TaskManagerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -98,6 +145,52 @@
 			productReference = 7410D83F2E564FE100CAA69D /* Task5.app */;
 			productType = "com.apple.product-type.application";
 		};
+		FFE9253F2E624FAB002473A1 /* TaskManagerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFE925482E624FAB002473A1 /* Build configuration list for PBXNativeTarget "TaskManagerTests" */;
+			buildPhases = (
+				FFE9253C2E624FAB002473A1 /* Sources */,
+				FFE9253D2E624FAB002473A1 /* Frameworks */,
+				FFE9253E2E624FAB002473A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFE925452E624FAB002473A1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FFE925412E624FAB002473A1 /* TaskManagerTests */,
+			);
+			name = TaskManagerTests;
+			packageProductDependencies = (
+			);
+			productName = TaskManagerTests;
+			productReference = FFE925402E624FAB002473A1 /* TaskManagerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		FFE9254C2E624FC2002473A1 /* TaskManagerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FFE925552E624FC2002473A1 /* Build configuration list for PBXNativeTarget "TaskManagerUITests" */;
+			buildPhases = (
+				FFE925492E624FC2002473A1 /* Sources */,
+				FFE9254A2E624FC2002473A1 /* Frameworks */,
+				FFE9254B2E624FC2002473A1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FFE925542E624FC2002473A1 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				FFE9254E2E624FC2002473A1 /* TaskManagerUITests */,
+			);
+			name = TaskManagerUITests;
+			packageProductDependencies = (
+			);
+			productName = TaskManagerUITests;
+			productReference = FFE9254D2E624FC2002473A1 /* TaskManagerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -110,6 +203,14 @@
 				TargetAttributes = {
 					7410D83E2E564FE100CAA69D = {
 						CreatedOnToolsVersion = 16.4;
+					};
+					FFE9253F2E624FAB002473A1 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 7410D83E2E564FE100CAA69D;
+					};
+					FFE9254C2E624FC2002473A1 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 7410D83E2E564FE100CAA69D;
 					};
 				};
 			};
@@ -128,12 +229,28 @@
 			projectRoot = "";
 			targets = (
 				7410D83E2E564FE100CAA69D /* Task5 */,
+				FFE9253F2E624FAB002473A1 /* TaskManagerTests */,
+				FFE9254C2E624FC2002473A1 /* TaskManagerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		7410D83D2E564FE100CAA69D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE9253E2E624FAB002473A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE9254B2E624FC2002473A1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -150,7 +267,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		FFE9253C2E624FAB002473A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FFE925492E624FC2002473A1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FFE925452E624FAB002473A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7410D83E2E564FE100CAA69D /* Task5 */;
+			targetProxy = FFE925442E624FAB002473A1 /* PBXContainerItemProxy */;
+		};
+		FFE925542E624FC2002473A1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7410D83E2E564FE100CAA69D /* Task5 */;
+			targetProxy = FFE925532E624FC2002473A1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		7410D84D2E564FE500CAA69D /* Debug */ = {
@@ -336,6 +480,76 @@
 			};
 			name = Release;
 		};
+		FFE925462E624FAB002473A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 543Y3UVLDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cassper.TaskManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Task5.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Task5";
+			};
+			name = Debug;
+		};
+		FFE925472E624FAB002473A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 543Y3UVLDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cassper.TaskManagerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Task5.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Task5";
+			};
+			name = Release;
+		};
+		FFE925562E624FC2002473A1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 543Y3UVLDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cassper.TaskManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Task5;
+			};
+			name = Debug;
+		};
+		FFE925572E624FC2002473A1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 543Y3UVLDP;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = cassper.TaskManagerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Task5;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -353,6 +567,24 @@
 			buildConfigurations = (
 				7410D8502E564FE500CAA69D /* Debug */,
 				7410D8512E564FE500CAA69D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFE925482E624FAB002473A1 /* Build configuration list for PBXNativeTarget "TaskManagerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFE925462E624FAB002473A1 /* Debug */,
+				FFE925472E624FAB002473A1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FFE925552E624FC2002473A1 /* Build configuration list for PBXNativeTarget "TaskManagerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FFE925562E624FC2002473A1 /* Debug */,
+				FFE925572E624FC2002473A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

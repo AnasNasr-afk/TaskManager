@@ -7,9 +7,11 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct TaskManagerApp: App {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
     let persistenceController = PersistenceController.shared
     @State private var selectedTab = 0
     @State private var mapCityName: String = ""
@@ -22,7 +24,18 @@ struct TaskManagerApp: App {
             MainTabView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
                 .environmentObject(appSettings)  // ✅ Inject AppSettings
-                .preferredColorScheme(appSettings.isDarkMode ? .dark : .light)  // ✅ Apply theme
+                .preferredColorScheme(appSettings.isDarkMode ? .dark : .light)
+                .onAppear {
+                    AppDelegate.onTap = { userInfo in
+                        print("Tapped notification payload:", userInfo)
+                    }
+                }
+                .task {
+                    let settings = await UNUserNotificationCenter.current().notificationSettings()
+                    if settings.authorizationStatus == .notDetermined {
+                        _ = try? await NotificationManager.shared.requestAuthorization()
+                    }
+                }  // ✅ Apply theme
         }
     }
 }
