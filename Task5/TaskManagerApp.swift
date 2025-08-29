@@ -1,3 +1,4 @@
+
 //
 //  TaskManagerApp.swift
 //  Task5
@@ -12,12 +13,16 @@ struct TaskManagerApp: App {
     let persistenceController = PersistenceController.shared
     @State private var selectedTab = 0
     @State private var mapCityName: String = ""
+    
+    // ✅ Add AppSettings for dark mode functionality
+    @StateObject private var appSettings = AppSettings()
 
     var body: some Scene {
         WindowGroup {
-            //MAINTABVIEW NOT  HOME VIEW 
-            HomeView(selectedTab: $selectedTab, mapCityName: $mapCityName)
+            MainTabView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environmentObject(appSettings)  // ✅ Inject AppSettings
+                .preferredColorScheme(appSettings.isDarkMode ? .dark : .light)  // ✅ Apply theme
         }
     }
 }

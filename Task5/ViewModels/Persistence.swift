@@ -10,20 +10,11 @@ import CoreData
 struct PersistenceController {
     static let shared = PersistenceController()
     
+    // Preview without dummy data
     static var preview: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
         let context = controller.container.viewContext
-        
-        let sampleTask1 = Task(context: context)
-        sampleTask1.title = "Complete iOS Bootcamp Task"
-        sampleTask1.isCompleted = false
-        sampleTask1.createdAt = Date()
-        
-        let sampleTask2 = Task(context: context)
-        sampleTask2.title = "Learn SwiftUI"
-        sampleTask2.isCompleted = true
-        sampleTask2.createdAt = Date().addingTimeInterval(-86400) // Yesterday
-        
+        // No dummy tasks — just an empty context
         try? context.save()
         return controller
     }()

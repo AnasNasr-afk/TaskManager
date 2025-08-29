@@ -11,6 +11,11 @@ struct MainTabView: View {
     @State private var selectedTab = 0
     @State private var mapCityName: String = ""
     
+    // Get the managed object context from the environment
+    @Environment(\.managedObjectContext) private var viewContext
+    // ✅ Get app settings for dark mode
+    @EnvironmentObject private var appSettings: AppSettings
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             HomeView(selectedTab: $selectedTab, mapCityName: $mapCityName)
@@ -25,7 +30,8 @@ struct MainTabView: View {
                 }
                 .tag(1)
 
-            SettingsView()
+            // ✅ Fixed: Pass the actual context and app settings
+            SettingsView(context: viewContext, appSettings: appSettings)
                 .tabItem {
                     Label("Settings", systemImage: "gearshape.fill")
                 }
@@ -37,4 +43,5 @@ struct MainTabView: View {
 #Preview {
     MainTabView()
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        .environmentObject(AppSettings())
 }
