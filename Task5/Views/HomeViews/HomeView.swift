@@ -19,6 +19,9 @@ struct HomeView: View {
     @State private var showingAddTask = false
     @Binding var selectedTab: Int
     @Binding var mapCityName: String
+    
+    // ✅ Add refresh trigger
+    @State private var refreshTrigger = false
 
     private var totalTasks: Int {
         tasks.count
@@ -52,6 +55,10 @@ struct HomeView: View {
                         }
                         .onDelete(perform: deleteTask)
                     }
+                    .refreshable {
+                        // ✅ Add pull-to-refresh functionality
+                        refreshTasks()
+                    }
                 }
             }
             .navigationTitle("Task Manager")
@@ -72,7 +79,14 @@ struct HomeView: View {
                 AddTaskView()
                     .environment(\.managedObjectContext, viewContext)
             }
-
+            // ✅ Listen for tasks deleted notification
+            .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("TasksDeleted"))) { _ in
+                refreshTasks()
+            }
+            // ✅ Refresh when view appears (in case of tab switching)
+            .onAppear {
+                refreshTasks()
+            }
         }
     }
     
@@ -97,9 +111,15 @@ struct HomeView: View {
             print("Error saving context: \(error)")
         }
     }
+    
+    // ✅ Add refresh function to force UI update
+    private func refreshTasks() {
+        refreshTrigger.toggle()
+        viewContext.refreshAllObjects()
+    }
 }
 
 #Preview {
     HomeView(selectedTab: .constant(0), mapCityName: .constant(""))
-        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
 }
